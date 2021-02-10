@@ -8,12 +8,13 @@ p {
 }
 
 h2 {
-  color: green;
+  color: chocolate;
   border: medium dashed green;
 }
 
 h1 {
-  font-style: italic small-caps;
+  font-size 50px:
+  font-family: 'Modak', cursive;
 }
   
 
