@@ -7,9 +7,15 @@ p {
   color: white;
 }
 
-h1 {
+h2 {
   color: chocolate;
+  border: medium dashed green;
 }
+
+h1 {
+  
+
+
 
 
 
