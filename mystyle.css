@@ -16,6 +16,11 @@ p {
   font-family: cursive;
   font-size: medium:
 }
+
+nav {
+  background-color: black;
+  height: 50px
+}
   
 
 
