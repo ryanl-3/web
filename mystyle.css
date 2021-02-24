@@ -21,6 +21,16 @@ nav {
   background-color: black;
   height: 50px
 }
+
+nav ul {
+  
+}
+
+nav ul li{
+  list-style-type: none;
+  width: 150px;
+}
+
   
 
 
