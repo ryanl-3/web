@@ -32,6 +32,11 @@ nav ul li {
   float: left;
 }
 
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
   
 
 
