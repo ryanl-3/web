@@ -20,7 +20,7 @@ p {
 
 nav {
   background-color: black;
-  height: 50px
+  height: 50px;
 }
 
 nav ul {
@@ -39,7 +39,7 @@ nav ul li a {
   text-decoration: none;
   color: white;
   line-height: 50px;
-  display: block:
+  display: block;
 }
 
   
