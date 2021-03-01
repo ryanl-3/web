@@ -5,17 +5,14 @@ background-color: aquamarine;
 p {
   background-color: #6495ED;
   color: white;
+  text-align: center;
+  font-family: cursive;
+  font-size: medium;
 }
 
 h2 {
   color: chocolate;
   border: medium dashed green;
-}
-
-p {
-  font-family: cursive;
-  font-size: medium;
-  display: flex;
 }
 
 nav {
