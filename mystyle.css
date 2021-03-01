@@ -20,6 +20,10 @@ p {
 h2 {
   color: chocolate;
   border: medium dashed green;
+  padding: 10px;
+  line-height: 15px;
+  text-align: justify;
+  font-size:30px
 }
 
 nav {
