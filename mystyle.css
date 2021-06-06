@@ -29,7 +29,7 @@ h2 {
 nav {
   background-color: #6495ED;
   height: 50px;
-  position: sticky;
+  position: static;
   bottom: 20px;
 }
 
