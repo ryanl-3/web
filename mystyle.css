@@ -29,6 +29,7 @@ h2 {
 nav {
   background-color: #6495ED;
   height: 50px;
+  width: 100%;
 }
 
 nav ul {
@@ -37,7 +38,7 @@ nav ul {
 
 nav ul li {
   list-style-type: none;
-  width: 100%;
+  width: 200px;
   float: left;
   border-right: 1px solid aquamarine;
   text-align: center;
