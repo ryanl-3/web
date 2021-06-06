@@ -29,6 +29,8 @@ h2 {
 nav {
   background-color: #6495ED;
   height: 50px;
+  position: sticky;
+  bottom: 20px;
 }
 
 nav ul {
