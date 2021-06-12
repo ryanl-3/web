@@ -9,6 +9,14 @@ body {
 background-color: aqua;
 }
 
+p.c{
+  background-color: #ADD8E6;
+  color: #808080;
+  text-align: center;
+  font-family: cursive;
+  font-size: 20px;
+}
+
 p {
   background-color: #ADD8E6;
   color: #808080;
