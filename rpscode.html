@@ -7,8 +7,8 @@ userwins = 0
 while True:
 	print("Computer Score:", computerwins)
 	print("User score:", userwins)
-	user_action = input("Rock Paper or Scissors: ")
-	possible_actions = ["rock", "paper", "scissors"]
+	user_action = input("Rock Paper or Scissor: ")
+	possible_actions = ["rock", "paper", "scissor"]
 	computer_action = random.choice(possible_actions)
 
 	if user_action.lower() == "rock":
@@ -27,7 +27,7 @@ while True:
 			userwins+=1
 		elif computer_action == "paper":
 			print("It's a tie! ")
-		elif computer_action == "scissors":
+		elif computer_action == "scissor":
 			print("You lose!")
 			computerwins+=1
 
@@ -38,7 +38,7 @@ while True:
 		elif computer_action == "paper":
 			print("You win!")
 			userwins+=1
-		elif computer_action == "scissors":
+		elif computer_action == "scissor":
 			print("It's a tie!")
 
 	else:
