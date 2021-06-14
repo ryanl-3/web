@@ -1,1 +1,45 @@
+import random
 
+computerwins = 0
+userwins = 0
+
+while True:
+	print("Computer Score:", computerwins)
+	print("User score:", userwins)
+	user_action = input("Rock Paper or Scissors: ")
+	possible_actions = ["rock", "paper", "scissors"]
+	computer_action = random.choice(possible_actions)
+
+	if user_action.lower() == "rock":
+		if computer_action == "rock":
+			print("It's a tie!")
+		elif computer_action == "paper":
+			print("You lose!")
+			computerwins+=1
+		else:
+			print("You win!")
+			userwins+=1
+
+	elif user_action.lower() == "paper":
+		if computer_action == "rock":
+			print("You win!")
+			userwins+=1
+		elif computer_action == "paper":
+			print("It's a tie! ")
+		elif computer_action == "scissors":
+			print("You lose!")
+			computerwins+=1
+
+	elif user_action.lower() == "scissors" or user_action.lower() == "scissor":
+		if computer_action == "rock":
+			print("You lose!")
+			computerwins+=1
+		elif computer_action == "paper":
+			print("You win!")
+			userwins+=1
+		elif computer_action == "scissors":
+			print("It's a tie!")
+
+	else:
+		print("Invalid input")
+	print()
