@@ -20,15 +20,23 @@
 
   <h2>Project Description</h2>
   
-  <p>Welcome to the number guessing game. Users will interact with the shell.</p>
+  <p>Welcome to the number guessing game. Users will interact with the computer through the shell.</p>
   
   <h2>Instructions</h2>
   
-  <p></p>
+  <p>How to play: You will be attempting to guess the number based on the range you choose. If you're incorrect, you may ask for a hint. The hint will tell you whether the number is higher or lower. To play, first type in the lowest number for your range. Next, type in the highest number for your range. If the number you selected was wrong, you will be asked if you would like a hint. You may type in "yes" if you would like to request a hint of "no" if you think you can guess the number without it. After each guess, the shell will give you feedback on your number guessed: "Too High" or "Too Low.” The game ends once you guess the correct number.</p>
   
   <h2>How it works</h2>
   
-  <p></p>
+  <p>The user types a lower bound number and an upper bound number of their choice to play this game. After that, the computer creates a list of all the numbers in between (inclusive). The user then begins guessing the number in the range that they selected. Each time the user inputs a number, a response from the computer is generated. The reactions are: “Higher!”, “Lower!”, or “Wow! That is correct.”. If the user misses the number on the first try, the user will have the option to request for a hint. The computer will ask for an input with the question “Would you like a hint?”. The user should respond with a “yes” or a “no”. The game continues normally if the user inputs no. However, if the user requests for a hint, the computer provides some information regarding the divisibility rules (2 and 5), to further narrow down the possibilities.</p>
+
+  <p>How the code works: The computer asks the user for two inputs– the first input sets the lower bound for the guesses, and the second input sets the upper bound. In the while true loop, the computer will keep asking the user for a number input through guess = int(input(“Guess an integer in your chosen range”)). After that, the user’s input is processed through three booleans (three cases).</p>
+
+  <p>if guess == computer_number:</p>
+
+  <p>elif guess > computer_number:</p>
+
+  <p>elif guess < computer_number:</p>
   
   <h2>Files</h2>
   
