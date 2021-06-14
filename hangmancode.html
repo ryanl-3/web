@@ -1,1 +1,285 @@
+<body>
+<pre>import random 
+word_file = open('word_bank', encoding = "utf8")
+text = str(word_file.read())
 
+HANGMAN = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''']
+
+
+#print(text)
+#print(len(text))
+
+def makelist(s):
+  return s.split('\n')
+
+wordlist = makelist(text)
+
+def longwords(lst): #Removes all words inside of our workbank less than 3 letters long 
+	for word in lst:
+		if len(word) <= 3:
+			lst.remove(word)
+	return lst
+  
+wordlist = longwords(wordlist)
+
+def sortAlphabet (l): #Alphabetically sorts the list into a dictionary
+	d = {}
+	string = 'abcdefghijklmnopqrstuvwxyz'
+	for letter in string:
+		d[letter] = []
+	for word in l:
+		letter = word[0]
+		d[letter].append(word)
+	return d
+word_dict = sortAlphabet(wordlist)
+# print(word_dict)
+
+gamedescription = """Hangman is a simple word guessing game. Your objective is to try and figure out an unknown word by guessing letters. If too many letters which do not appear in the word are guessed, the player is hanged (and loses). As letters in the word are guessed, write them above the cooresponding underline. If a letter not in the word is guess, draw a picture of a person on the gallow–one part for each incorrect letter guess. Most frequently, the person is drawn in 6 parts (for 6 letter guesses) in the order: head, body, left leg, right leg, left arm, right arm."""
+print(gamedescription)
+
+#---------------------------Game Code starts here---------------------------
+while True:
+	hints_used = 0
+	print("\n")
+	possible_words = word_dict
+	lst = ['a', 'b', 'c','d' ,'e' ,'f' ,'g' ,'h' ,'i' ,'j' ,'k' ,'l', 'm' ,'n' ,'o' ,'p' ,'q' ,'r' ,'s' ,'t' ,'u' ,'v' ,'w' , 'x' ,'y' ,'z']
+	user_guesses = []
+	computer_letter = random.choice(lst)
+	computer_word = random.choice(word_dict[computer_letter])
+	#The computer now has a randomly generated word 
+
+	#Setup
+	user_ready = input("Ready to start playing? (type in yes)")
+	if user_ready.lower() == 'yes': #Ready to start playing 
+		print('\n')
+		lives = 7
+		wordlength = len(computer_word)
+		lettersleft = wordlength
+		l = list(computer_word)
+		s = []
+		for i in range(len(computer_word)):
+			s.append('_')
+
+		print("The randomly chosen word has length"+' '+str(wordlength) + ":" + " " +'\n'+ '_ '*wordlength+ '\n')
+
+		while True:
+			user_guess = input('Guess a letter or word: ')
+			user_guess = user_guess.lower()
+
+			if user_guess.lower() == computer_word:
+				print("Well done! You guessed the entire word with " + str(lives) + " lives left")
+				break
+			if user_guess.lower() in l:
+				for index in range (len(l)):
+					if user_guess.lower() == l[index]:
+						lettersleft -=1
+						s[index] = l[index]	
+						l[index] = '-'
+				print(' '.join(s))
+				print()
+				if '_' not in s:
+					print("Well done! You guessed the entire word with " + str(lives) + " lives left")
+					break 	
+				
+			else: #user_guess not in l -------------------------------
+				if user_guess in user_guesses:
+					print("You already guessed this letter! Lives: ", lives)
+					print(' '.join(s))
+					print()
+				elif user_guess in s:
+					print("You already guessed this letter! Lives: ", lives)
+					print(' '.join(s))
+					print()
+				elif type(user_guess) != str:
+					print("Invalid input. Please type in a letter from a-z")
+				
+				else:
+					lives-=1
+					print(HANGMAN[6-lives])
+					user_guesses.append(user_guess)
+					print("The word does not contain this letter. Lives: ", lives)
+					if lives == 0:
+						print("Game Over. You ran out of lives. The word was: ",computer_word)
+						break
+					print(' '.join(s))
+					print()
+			
+			#Hints --------------------
+			if lives ==3: 
+				user_hint = input("Would you like a hint (type in yes or no)")
+				if user_hint == 'yes': 
+					hints_used+=1
+					hints = []
+					for letter in l:
+						if letter != '-':
+							hints.append(letter)
+					hint = random.choice(hints)				
+					for index in range (len(l)):
+						if hint == l[index]:
+							lettersleft -=1
+							s[index] = l[index]	
+							l[index] = '-'
+					print(' '.join(s))
+					print('Pro-tip! The most common letters in the english alphabet are E, A, R, I, O. Try to guess these letters to maximize your chances of winning!')
+					print()
+					if '_' not in s:
+						print("Well done! You guessed the entire word with " + str(lives) + " lives left. You used " + str(hints_used) + ' hints')
+						break
+				elif user_hint == 'no':
+					print("An admirable choice!")
+				else:
+					if user_hint != 'yes' or user_hint != 'no':
+						user_hint = input("Invalid response. Type in yes or no: ")
+					if user_hint == 'yes': 
+						hints = []
+						for letter in l:
+							if letter != '-':
+								hints.append(letter)
+						hint = random.choice(hints)
+						s[l.index(hint)] = hint
+						print(' '.join(s))
+						lettersleft -=1
+						if '_' not in s:
+							print("Well done! You guessed the entire word with " + str(lives) + " lives left. You used " + str(hints_used) + ' hints')
+							break
+					elif user_hint == 'no':
+						print("An admirable choice!")
+
+			if lives ==2: 
+				user_hint = input("Would you like a hint (type in yes or no)")
+				if user_hint == 'yes': 
+					hints_used+=1
+					hints = []
+					for letter in l:
+						if letter != '-':
+							hints.append(letter)
+					hint = random.choice(hints)				
+					for index in range (len(l)):
+						if hint == l[index]:
+							lettersleft -=1
+							s[index] = l[index]	
+							l[index] = '-'
+					print(' '.join(s))
+					print('Pro-tip! The most common letters in the english alphabet are E, A, R, I, O. Try to guess these letters to maximize your chances of winning!')
+					print()
+					if '_' not in s:
+						print("Well done! You guessed the entire word with " + str(lives) + " lives left. You used " + str(hints_used) + ' hints')
+						break
+				elif user_hint == 'no':
+					print("An admirable choice!")
+				else:
+					if user_hint != 'yes' or user_hint != 'no':
+						user_hint = input("Invalid response. Type in yes or no: ")
+					if user_hint == 'yes': 
+						hints = []
+						for letter in l:
+							if letter != '-':
+								hints.append(letter)
+						hint = random.choice(hints)
+						s[l.index(hint)] = hint
+						print(' '.join(s))
+						lettersleft -=1
+						if '_' not in s:
+							print("Well done! You guessed the entire word with " + str(lives) + " lives left. You used " + str(hints_used) + ' hints')
+							break
+					elif user_hint == 'no':
+						print("An admirable choice!")
+
+			if lives == 1: #Hint code for when lives = 1
+				user_hint = input("Would you like a hint (please type in yes or no)")
+				if user_hint == 'yes': 
+					hints_used +=1
+					hints = []
+					for letter in l:
+						if letter != '-':
+							hints.append(letter)
+					hint = random.choice(hints)				
+					for index in range (len(l)):
+						if hint == l[index]:
+							lettersleft -=1
+							s[index] = l[index]	
+							l[index] = '-'
+					print(' '.join(s))
+					if '_' not in s:
+						print("Well done! You guessed the entire word with " + str(lives) + " lives left. You used " + str(hints_used) + " hints")
+						break
+				elif user_hint == 'no':
+					print("An admirable choice!")
+				else:
+					user_hint = input("Invalid response. Type in yes or no: ")
+					if user_hint == 'yes': 
+						hints = []
+						for letter in l:
+							if letter != '-':
+								hints.append(letter)
+						hint = random.choice(hints)
+						s[l.index(hint)] = hint
+						print(' '.join(s))
+						lettersleft -=1
+						if '_' not in s:
+							print("Well done! You guessed the entire word with " + str(lives) + " lives left. You used " + str(hints_used) + " hints")
+							break
+					elif user_hint == 'no':
+						print("An admirable choice!")
+
+			#Win/Loss conditions---------------------
+			if '_' not in s or lettersleft == 0: 
+				print("Well done! You guessed the entire word with " + str(lives) + " lives left")
+			elif lettersleft == 0:
+				print("Well done! You guessed the entire word with " + str(lives) + " lives left")
+			elif lives == 0:
+				print("Game Over. You ran out of lives. The word was: ",computer_word)
+				break
+				
+	else: 
+		print("Invalid input")</pre>
+</body>
