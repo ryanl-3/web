@@ -20,15 +20,17 @@
   
   <h2>Project Description</h2>
   
-  <p></p>
+  <p>Welcome to Hangman. Users will interact with the computer through the shell.</p>
   
   <h2>Instructions</h2>
   
-  <p></p>
+  <p>How to play: You will be asked if you are ready to start by typing "yes" or "no" into the shell. Once you type "yes", "_"  's will show up, each blank representing the number of hidden letters the word still contains. Here, you will start playing. Each turn, you will either guess a letter or the entire word if you believe you know what the mystery word is. Remember to logically make your guesses because there is a certain number of lives you have. Every time you choose a letter, and it isn't doesn't appear above the "_," you will lose a life. You may ask for a hint once you are down to three lives. You will have a maximum of seven lives.  Each time a life is lost, the computer displays an image of a hangman in the shell. This image indicates the number of lives the player has left. The game will end with you guessing the word correctly or when you lose all your lives.
+</p>
   
   <h2>How it works</h2>
   
-  <p></p>
+  <p>A word bank consisting of 10,000 words is attained, which is used to select the word randomly. The code opens, reads, and modifies the word file (functions in the beginning). This includes removing words from the word file that are less than four letters long. The contents of this file are first sorted into a list, and after,  alphabetically into a dictionary, and words that are less than three letters long are removed.</p>
+  <p>We searched online for a long list of words that the computer can randomly generate for this game. The contents of this file are sorted alphabetically into a  dictionary, and words that are less than three letters long are removed. Once the user is ready to begin, the user randomly picks a letter.  It then accesses the dictionary key of that letter (which is a list) and randomly selects a word for the user to guess. The computer will output _ to indicate the unknown letters.</p>
   
   <h2>Files</h2>
   
